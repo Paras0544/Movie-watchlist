@@ -1,0 +1,7 @@
+<h1>My Movie Watchlist</h1>
+<ul>
+  <% movies.forEach(movie => { %>
+    <li><%= movie.title %> (<%= movie.year %>)</li>
+  <% }) %>
+</ul>
+<a href="/add">Add a new movie</a>
