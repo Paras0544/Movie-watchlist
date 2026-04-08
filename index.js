@@ -1,5 +1,5 @@
 require('dotenv').config(); // Load environment variables from .env file
-import axios from "axios"; // Import axios for making HTTP requests
+const axios = require ('axios'); // Import axios for making HTTP requests
 const Movie = require('./models/Movie');  // Import the Movie model from the models directory
 const path = require('path'); // Node.js module for handling file paths 
 const express = require('express'); // express framework for building web applications
@@ -53,5 +53,16 @@ mongoose.connect(process.env.MONGODB_URI) // Connect to MongoDB using the URI fr
     catch(err){
       console.error("failed to save movie:", err); // Log any errors that occur during saving
       res.status(500).send("Internal Server Error"); // Send a 500 response if there's an error
+    }
+  })
+
+  app.post('/delete-movie', async (req,res) => {
+    try {
+      await Movie.findByIdAndDelete(req.body._id);
+      res.redirect("/");
+    }
+    catch(err){
+      console.error("failed to delete movie:", err);
+      res.status(500).send("Internal Server Error");
     }
   })

@@ -7,4 +7,8 @@
 
   <% movies.forEach(movie => { %>
     <li><%= movie.title %> (<%= movie.year %>)</li>
+    <form action="/delete-movie" method="POST">
+        <input type="hidden" name="_id" value="<%= movie._id %>">
+        <button type="submit">Delete</button>
+    </form>
   <% }) %>
