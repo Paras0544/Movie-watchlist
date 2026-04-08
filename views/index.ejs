@@ -1,7 +1,10 @@
 <h1>My Movie Watchlist</h1>
-<ul>
+
+<form action ="/search-movie" method="POST">
+    <input type="text" name="searchQuery" placeholder="Search for a movie...">
+    <button type="submit">Search</button>
+</form>
+
   <% movies.forEach(movie => { %>
     <li><%= movie.title %> (<%= movie.year %>)</li>
   <% }) %>
-</ul>
-<a href="/add">Add a new movie</a>

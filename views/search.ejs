@@ -1,0 +1,13 @@
+<h1>Search Results</h1>
+
+<% movies.forEach(movie => { %>
+    <li>(<%= movie.Poster %>)(<%= movie.Title %>) (<%= movie.Year %>)</li>
+
+  <form action="/save-movie" method="POST">
+        <input type="hidden" name="title" value="<%= movie.Title %>">
+        <input type="hidden" name="year" value="<%= movie.Year %>">
+        <input type="hidden" name="poster" value="<%= movie.Poster %>">
+        <button type="submit">Save</button>
+    </form>
+    <% }) %>
+
